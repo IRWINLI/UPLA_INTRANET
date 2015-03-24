@@ -1,0 +1,21 @@
+.pie{
+  /*position: fixed;
+  bottom: 20px;*/
+  background: rgb(250, 250, 250)  url() repeat-x 0 0; border-top: 1px solid #000000; padding: 15px 0 5px; 
+  
+
+  /*background-color: rgb(100, 131, 160);*/
+  color: #666;
+  font-size: 11px;
+  /*text-align: center;*/
+  font-weight: normal;
+  font-family: sans-serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 80%;
+  float: center;
+  margin-top: 100px;
+  margin-left: 10%;
+  margin-right: 10%;
+
+}

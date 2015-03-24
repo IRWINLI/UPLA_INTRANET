@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rpt_Salones" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="770770dc-a220-462b-8c66-ac7e0a9ac48f">
+	<property name="ireport.zoom" value="1.948717100000007"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="21"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="2dd98a36-4289-4d14-9603-6e83203c86fa"/>
+	<subDataset name="dataset1" uuid="9cdf19aa-bc9f-4aab-8070-e1d61e9b0abb"/>
+	<parameter name="car" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="esp" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from [Academico].[fatCon_rptgrafSalon]($P{car},$P{esp})]]>
+	</queryString>
+	<field name="facultad" class="java.lang.String"/>
+	<field name="carrera" class="java.lang.String"/>
+	<field name="especialidad" class="java.lang.String"/>
+	<field name="ciclo" class="java.lang.String"/>
+	<field name="seccion" class="java.lang.String"/>
+	<field name="turno" class="java.lang.String"/>
+	<field name="curso" class="java.lang.String"/>
+	<field name="nom_curso" class="java.lang.String"/>
+	<field name="matriculados" class="java.lang.Integer"/>
+	<field name="maximo" class="java.lang.Integer"/>
+	<field name="disponible" class="java.lang.String"/>
+	<field name="ubicacion" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="tiempo" class="java.lang.String"/>
+	<group name="ciclo_grupo" keepTogether="true">
+		<groupExpression><![CDATA[$F{ciclo}]]></groupExpression>
+		<groupHeader>
+			<band height="39">
+				<textField>
+					<reportElement x="61" y="25" width="51" height="13" uuid="865441e5-2713-4a69-ac08-09918f032a90"/>
+					<textElement>
+						<font size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ciclo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="16" y="24" width="44" height="15" uuid="113cf919-e6ce-4649-ab7c-62fb4c7d2ce6"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NIVEL: ]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="turno_grupo" keepTogether="true">
+		<groupExpression><![CDATA[$F{turno}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField>
+					<reportElement x="80" y="10" width="100" height="14" uuid="9eb8794e-85b0-4214-b9c8-ec455f1a1a9a"/>
+					<textElement>
+						<font size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{turno}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="31" y="10" width="49" height="14" uuid="6fd66c58-c4be-4322-9d44-df86a21aac80"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Turno:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="seccion_grupo" keepTogether="true">
+		<groupExpression><![CDATA[$F{seccion}]]></groupExpression>
+		<groupHeader>
+			<band height="61">
+				<rectangle radius="5">
+					<reportElement x="45" y="31" width="507" height="26" forecolor="#000000" backcolor="#0099CC" uuid="422d8d0c-c9ad-4102-9e80-577247396e77"/>
+					<graphicElement>
+						<pen lineStyle="Solid"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="109" y="40" width="263" height="20" forecolor="#FFFFFF" uuid="487243e0-4052-47b8-88f6-5c39ff108fe8"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ASIGNATURA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="374" y="34" width="95" height="26" forecolor="#FFFFFF" uuid="cbf3ba1e-6383-4a52-b667-813681c240cf"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Matriculados / Capacidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="472" y="40" width="80" height="20" forecolor="#FFFFFF" uuid="4755f2ea-3c02-4f8a-8b70-dcb9a03819b7"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ESTADO]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="101" y="6" width="100" height="14" uuid="d898ca1e-d251-4123-8363-2dfdf66c8ab8"/>
+					<textFieldExpression><![CDATA[$F{seccion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="45" y="40" width="60" height="20" forecolor="#FFFFFF" uuid="f85c6c90-6371-459e-b86d-9965aab03044"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CÓDIGO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="44" y="6" width="54" height="14" uuid="c86a5060-4bb0-4052-aaf1-e43aebecb17f"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sección:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="241" y="6" width="65" height="14" uuid="500e8153-d7a6-4a95-a3ea-67ac8d19dbdd"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Ubicación:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="310" y="6" width="230" height="14" uuid="d39a527d-231a-4e57-8542-3069a7728386"/>
+					<textFieldExpression><![CDATA[$F{ubicacion}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121">
+			<staticText>
+				<reportElement x="139" y="17" width="292" height="52" uuid="83562d33-a53d-4c13-9553-2a1d9a477fad"/>
+				<textElement textAlignment="Center">
+					<font size="18" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[DISPONIBILIDAD DE SALONES POR NIVEL ACADÉMICO]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="26" y="3" width="35" height="34" uuid="1a9dd016-417c-4195-926a-d514cd28b4d1"/>
+				<imageExpression><![CDATA["images/logo_upla.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="13" y="37" width="60" height="18" uuid="138a387d-3249-474a-9418-681f65b7bd40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD PERUANA LOS ANDES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="3" y="69" width="549" height="52" uuid="8d869f03-208b-4256-b295-bc77cfa1122a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="14" y="76" width="87" height="13" uuid="c158aeb2-37dc-4c3a-8d30-402abb4eb192"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Facultad:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="14" y="89" width="156" height="15" uuid="4d971921-919d-4202-aae7-cc108965be42"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facultad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="376" y="89" width="164" height="15" uuid="8bfc5ce2-f887-4b24-b8ef-8299016b4cc5"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="375" y="76" width="130" height="13" uuid="495f77d2-8f70-4f3f-938b-86887dd1b3ae"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Especialidad:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="180" y="89" width="176" height="15" uuid="cdedc132-37c8-476d-8eb8-57b481f518ee"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{carrera}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="76" width="108" height="13" uuid="6e4fcad5-9a77-4614-ad2d-997fa4f25a32"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Carrera:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="505" y="-14" width="65" height="14" uuid="f62dacd7-c5ab-436e-821a-11a570a8cea1"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="-3" width="65" height="14" uuid="753ed6e7-8bce-419f-bb64-8630caae18d6"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tiempo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="459" y="-16" width="43" height="15" uuid="c5cab456-a3bb-4e21-b67d-d02ae12cab0c"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="-4" width="43" height="15" uuid="dd42eed5-05c2-4f10-8593-9b0ff5f7f370"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="45" y="0" width="507" height="20" backcolor="#FFFFFF" uuid="f279d1ca-3580-46aa-922d-0f79a5b14801"/>
+			</rectangle>
+			<textField>
+				<reportElement x="44" y="4" width="61" height="16" uuid="69530644-0cd6-4f8e-8132-bcb4e1c10a0b"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{curso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="4" width="260" height="16" uuid="f37eaba5-8993-4bee-a427-24616d6e7dcd"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_curso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="4" width="17" height="16" uuid="e0e61e28-0454-41ff-b2f3-637b07f64906"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{matriculados}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="4" width="25" height="16" uuid="ed98cd57-5183-4543-95ca-fbb001b52f4f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{maximo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="3" width="80" height="17" uuid="94979c55-07af-4143-acb5-943b01fe1aed"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disponible}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="418" y="4" width="13" height="16" uuid="8c35ca48-b55b-43bd-9f7d-1542a24e13f5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="11" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

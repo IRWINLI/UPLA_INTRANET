@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_asistenciaDocente" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="23e8149d-2130-4fda-b92c-830b9d0bb666">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{est_Marca}== 0]]></conditionExpression>
+			<style mode="Transparent" forecolor="#BD2D2D"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{est_Marca}== 1]]></conditionExpression>
+			<style mode="Transparent" forecolor="#DEAE14"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{est_Marca}== 2]]></conditionExpression>
+			<style mode="Transparent" forecolor="#0000FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{est_Marca}== 3]]></conditionExpression>
+			<style mode="Transparent" forecolor="#0000FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{est_Marca}== 10]]></conditionExpression>
+			<style mode="Transparent" forecolor="#FF6600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{est_Marca}== 11]]></conditionExpression>
+			<style mode="Transparent" forecolor="#006699"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="local" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_marcado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[[Academico].[rpt_AsistenciaTotal] $P{local},$P{fecha_marcado}]]>
+	</queryString>
+	<field name="dni" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="diaInicio" class="java.sql.Time"/>
+	<field name="diaFin" class="java.sql.Time"/>
+	<field name="est_Marca" class="java.lang.Integer"/>
+	<field name="carrera" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="219" y="52" width="307" height="36" forecolor="#003399" uuid="416038c6-78da-4db8-888e-ddbd028e5723"/>
+				<textElement>
+					<font size="20" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ASISTENCIA DOCENTE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="54" height="52" uuid="1c0dd9c2-f66f-401c-9cdc-6b377c0452fc"/>
+				<imageExpression><![CDATA["logo_upla0.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="59" y="0" width="138" height="52" uuid="48c728f1-8a86-495b-8fcb-7867c4790a91"/>
+				<textElement>
+					<font fontName="SansSerif" size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[U P L A]]></text>
+			</staticText>
+			<line>
+				<reportElement x="54" y="33" width="128" height="1" uuid="5cd8f043-278c-4bc3-8ddc-36c60dff0c0f"/>
+			</line>
+			<staticText>
+				<reportElement x="46" y="32" width="143" height="20" forecolor="#000000" uuid="b76e343c-64e1-4d4a-b90c-a9b9c4adb81a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD PERUANA LOS ANDES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="546" y="4" width="237" height="51" uuid="c53a28d1-145d-4b35-8c7f-fbf6078433e0"/>
+				<imageExpression><![CDATA[($P{local}.equals("01")?"/images/FACULTADES/miniBannerFac_01.png":
+$P{local}.equals("02")?"/images/FACULTADES/miniBannerFac_02.png":
+$P{local}.equals("03")?"/images/FACULTADES/miniBannerFac_03.png":
+$P{local}.equals("04")?"/images/FACULTADES/miniBannerFac_04.png":
+$P{local}.equals("05")?"/images/FACULTADES/miniBannerFac_05.png":
+$P{local}.equals("11")?"/images/FACULTADES/miniBannerFac_11.png": "")]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch">
+			<rectangle radius="4">
+				<reportElement x="0" y="5" width="745" height="20" forecolor="#990000" backcolor="#FFFFFF" uuid="afc10b20-2826-4c47-b00a-257c2e53faf4"/>
+				<graphicElement>
+					<pen lineColor="#003366"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="66" y="5" width="83" height="20" forecolor="#000000" uuid="ed473263-5d14-40bc-b596-40363a3dbb83"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACULTAD:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="5" width="65" height="20" forecolor="#000000" uuid="a276405d-cb1e-405e-ae32-939102ad7104"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="149" y="5" width="271" height="20" forecolor="#000000" uuid="f79c5ca1-e2c6-46eb-88eb-b7530bb9d872"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{local}.equals("00") ?
+    "SIN FACULTAD" :
+$P{local}.equals("01") ?
+    "INGENIERIA" :
+$P{local}.equals("02") ?
+    "CIENCIAS ADMINISTRATIVAS Y CONTABLES" :
+$P{local}.equals("03") ?
+    "DERECHO Y CIENCIAS POLITICAS" :
+$P{local}.equals("04") ?
+    "EDUCACION Y CIENCIAS HUMANAS" :
+$P{local}.equals("05") ?
+    "CIENCIAS DE LA SALUD" :
+$P{local}.equals("11") ?
+    "MEDICINA HUMANA" :
+    "NO ESPECIFICADA"
+)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="504" y="5" width="167" height="20" uuid="7eb341b9-be82-48b6-ae73-d3bcab06d6c1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="107" height="20" forecolor="#990000" uuid="b3fed63d-f8fd-41b1-a0ec-5dbc04849715"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="1" width="216" height="20" forecolor="#990000" uuid="d156ec77-72a9-4496-9690-8f1c9edf1e75"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos y Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="1" width="108" height="20" forecolor="#990000" uuid="19415784-4fe4-4129-87e4-6f011c5ec90a"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horario de clases]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="623" y="1" width="129" height="20" forecolor="#990000" uuid="49d966ce-f12b-4064-aba6-1fcff726cbcf"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado Marcacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="2" width="166" height="20" forecolor="#990000" uuid="68626456-a533-4fc9-824e-dc36c380b211"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Escuela Acad. Profesional]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="107" height="20" uuid="c4452e51-bb4a-4aab-8266-4d2a02ebb067"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="107" y="0" width="216" height="20" uuid="ff46cda5-ac37-41ed-b751-52c5db403680"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" mode="Opaque" x="622" y="0" width="123" height="20" uuid="07a787bd-ad62-44fc-9978-addf7ac785db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[($F{est_Marca} == 0 ?
+    "Inasistencia" :
+$F{est_Marca} == 1 ?
+    "Solo Entrada" :
+$F{est_Marca} == 2 ?
+    "Correcto" :
+$F{est_Marca} == 3 ?
+    "Justificado " :
+$F{est_Marca} == 10 ?
+    "Tardanza sin Salida" :
+$F{est_Marca} == 11 ?
+    "Tardanza" :
+$F{est_Marca} == 100 ?
+    "---" :
+    "Desconocido"
+)]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="331" y="1" width="47" height="20" uuid="aedb5925-8889-4725-bfd8-7b367d949991"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{diaInicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="378" y="1" width="13" height="20" uuid="4d8857cf-d3eb-47d1-b642-e0ab0ce279d3"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ - ]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="391" y="1" width="48" height="20" uuid="9b0112e9-0a0a-493f-bd00-bf879d8e2493"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{diaFin}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="451" y="1" width="166" height="20" uuid="5cd4298b-e357-4f2b-82a9-067922e3bfa5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{carrera}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="-1" width="745" height="1" uuid="a1706e8a-d8a1-462f-a51a-e25480cbdf36"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="624" y="0" width="121" height="20" uuid="14c00773-7cc0-481c-87da-5e67ee5aec12"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pag. " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="36" y="5" width="60" height="13" uuid="a94d3420-7777-48be-abdd-7c996d4b9937"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Generado:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h:mm a">
+				<reportElement x="104" y="5" width="160" height="20" uuid="13367af0-c270-4805-aa1a-df1c9691f82e"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

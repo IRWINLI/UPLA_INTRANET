@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_historialMarcacion" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c0155119-0cec-4faf-9925-46b96ef18c31">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_ini" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_fin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dni" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[set language spanish
+declare @ahora time (7)= GETDATE()
+declare @hoy datetime  = GETDATE()
+declare @dni nvarchar (10)='21423306'
+declare @fecha_ini date = $P{fecha_ini}
+declare @fecha_fin date = $P{fecha_fin}
+
+
+
+select distinct row_number()over(order by dia_marcado asc)row, DATENAME(weekday,dia_marcado) nomDia,
+convert(varchar(5),h_ini,108)+' - '+convert(varchar(5),h_fin,108) + ' horas' horario,
+case when est_Marca = 0 and @hoy = dia_marcado and @ahora<=h_ini then '0'
+     when est_Marca = 0 and @hoy = dia_marcado and @ahora>h_ini then 'X'
+     when est_Marca = 0 and @hoy < dia_marcado then '0'
+     when est_Marca = 0 and @hoy > dia_marcado then 'X'
+     when est_Marca = 1 then '1'
+     when est_Marca = 2 then '1'
+     when est_Marca = 3 then 'J'
+     when est_Marca = 10 then 'T'
+     when est_Marca = 11 then 'T'
+end ingreso,
+case when est_Marca = 0 and @hoy = dia_marcado and @ahora<=h_ini then '0'
+     when est_Marca = 0 and @hoy = dia_marcado and @ahora>h_ini then 'X'
+     when est_Marca = 0 and @hoy < dia_marcado then '0'
+     when est_Marca = 0 and @hoy > dia_marcado then 'X'
+     when est_Marca = 1 and @hoy = dia_marcado and @ahora<=h_fin then '0'
+     when est_Marca = 1 and @hoy = dia_marcado and @ahora>h_fin then 'X'
+     when est_Marca = 1 and @hoy < dia_marcado then '0'
+     when est_Marca = 1 and @hoy > dia_marcado then 'X'
+     when est_Marca = 2 then '1'
+     when est_Marca = 3 then 'J'
+     when est_Marca = 10 then 'X'
+     when est_Marca = 11 then '1'
+end salida,
+dia_marcado,
+d.Asi_Asignatura,
+h_ini
+
+from Academico.TD_Horario a
+inner join Academico.TM_Horario b on a.n_hor_codigo = b.n_hor_codigo
+                            left join dbo.CLe_CargaLectiva c on b.n_cle_codigo = c.CLe_Auto
+                            left join General.TM_asi_Asignatura d on c.Asi_Id like d.Asi_Id
+where b.c_per_id =$P{dni}  and dia_marcado between @fecha_ini and @fecha_fin
+order by dia_marcado asc, h_ini asc]]>
+	</queryString>
+	<field name="row" class="java.lang.Long"/>
+	<field name="nomDia" class="java.lang.String"/>
+	<field name="horario" class="java.lang.String"/>
+	<field name="ingreso" class="java.lang.String"/>
+	<field name="salida" class="java.lang.String"/>
+	<field name="dia_marcado" class="java.sql.Date"/>
+	<field name="Asi_Asignatura" class="java.lang.String"/>
+	<field name="h_ini" class="java.sql.Time"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="124" splitType="Stretch">
+			<rectangle radius="2">
+				<reportElement x="10" y="84" width="738" height="35" forecolor="#000000" backcolor="#DFF4FA" uuid="0de75fe2-44a0-4f3d-aa50-b5a207cc5e14"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="193" y="32" width="376" height="22" forecolor="#003399" uuid="f56947ab-8b02-43d2-94bc-8dc6ebe1e93b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="18" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[HISTORIAL DE MARCACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="92" width="109" height="17" uuid="0d03c091-8930-4c9e-a396-748cffacdac9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marcacion Correcta:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="121" y="92" width="28" height="17" uuid="901345c1-9214-4760-ac08-542802430e3c"/>
+				<imageExpression><![CDATA["images/tema_completo.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="543" y="93" width="28" height="17" uuid="ed4b33b6-ec1a-4ea5-819f-e2dc55c0f080"/>
+				<imageExpression><![CDATA["images/tema_justificadp.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="198" y="92" width="51" height="17" uuid="597eb9fc-ec5c-4c88-9d72-7e8e7a46418f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tardanza:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="249" y="92" width="28" height="17" uuid="9d7dc0af-e3f0-4e56-a52a-95dcffbdeec1"/>
+				<imageExpression><![CDATA["images/tema_tarde.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="397" y="91" width="30" height="18" uuid="d73954d6-6cdb-44db-a8c1-125a1ed46eda"/>
+				<imageExpression><![CDATA["images/tema_nulo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="330" y="92" width="68" height="17" uuid="3d190e11-a553-430f-b31f-9a3c0ceb370f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No marcado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="93" width="62" height="17" uuid="6a8be061-2850-473c-a793-2c4e24d405b9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Justificado:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="697" y="93" width="28" height="17" uuid="f07cd7e6-8d89-4976-810a-7360a3a290f1"/>
+				<imageExpression><![CDATA["images/tema_incompleto.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="610" y="93" width="87" height="17" uuid="0ad8150c-79ce-41b5-a768-8792d47209ba"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha posterior:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="59" width="81" height="20" uuid="222e8499-c441-40f8-9378-1ca8fa0c6a8e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA INICIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="59" width="85" height="20" uuid="48acdf30-19cd-44fe-a049-1d9388f13bf3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA FINAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="59" width="83" height="20" uuid="5b16a298-c5df-48bd-8e36-6f581ca69af9"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha_ini}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="59" width="100" height="20" uuid="8775d496-2f29-4193-b655-edab754b8e31"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha_fin}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="5" y="0" width="47" height="45" uuid="a11abaa4-f93e-41fd-ab8b-ea95fb9d5838"/>
+				<imageExpression><![CDATA["images/logo_upla.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="46" y="30" width="139" height="15" uuid="82200bfa-1515-439e-84b6-ad4c3d57dcf0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD PERUANA LOS ANDES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="0" width="150" height="37" uuid="94348e62-a010-4082-a36c-1e370d4de217"/>
+				<textElement verticalAlignment="Top">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[U P L A]]></text>
+			</staticText>
+			<line>
+				<reportElement x="48" y="31" width="130" height="1" uuid="117ba2df-01fc-48d5-958e-d3892c884df5"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle radius="2">
+				<reportElement x="10" y="1" width="738" height="20" forecolor="#000000" backcolor="#DFF4FA" uuid="d77d22f5-1a56-4318-a99e-c7e85bc28695"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="285" y="1" width="88" height="20" uuid="060af805-ec07-4c51-ad18-2fba103c03fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="475" y="1" width="119" height="20" uuid="414e244a-1fb2-44d7-b4c2-16fef7bd703d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="594" y="1" width="84" height="20" uuid="f25db25d-9429-456f-8ce0-ca1e2894fb92"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INGRESO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="678" y="1" width="70" height="20" uuid="7e43d176-97e6-48ae-a153-abdd3c3f7d87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="1" width="100" height="20" uuid="2050f288-b2be-4710-b279-a7be244a2ee1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="1" width="274" height="20" uuid="414c8120-342f-468e-afb9-4243af19db46"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ASIGNATURA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="35" y="2" width="250" height="20" uuid="7e04fd25-f451-48b0-b3e0-08fc563a960a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Asi_Asignatura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="2" width="88" height="20" uuid="b23a2680-1ca3-4222-9a3e-bc69acb03d78"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nomDia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="2" width="119" height="20" uuid="a1e271e7-8645-44a3-8f39-8784864f8ba4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{horario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="374" y="2" width="100" height="20" uuid="9f85148a-f1f3-40a6-8924-e4a7e879c565"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dia_marcado}]]></textFieldExpression>
+			</textField>
+			<image isUsingCache="false" onErrorType="Icon">
+				<reportElement x="625" y="-2" width="18" height="18" uuid="a9032a26-f19a-465c-ad2a-e6d1017bf060"/>
+				<imageExpression><![CDATA[($F{ingreso}.equals("X") ?
+    "images/tema_nulo.png" :
+$F{ingreso}.equals("J") ?
+    "images/tema_justificadp.png" :
+$F{ingreso}.equals("1") ?
+    "images/tema_completo.png" :
+$F{ingreso}.equals("T") ?
+    "images/tema_tarde.png" :
+$F{ingreso}.equals("0") ?
+    "images/tema_incompleto.png" :
+    ""
+)]]></imageExpression>
+			</image>
+			<image isUsingCache="false" onErrorType="Icon">
+				<reportElement x="697" y="-2" width="18" height="18" uuid="340ff4e2-5ab2-4dd1-a8f8-99c7ab7d4674"/>
+				<imageExpression><![CDATA[($F{salida}.equals("X") ?
+    "images/tema_nulo.png" :
+$F{salida}.equals("J") ?
+    "images/tema_justificadp.png" :
+$F{salida}.equals("1") ?
+    "images/tema_completo.png" :
+$F{salida}.equals("T") ?
+    "images/tema_tarde.png" :
+$F{salida}.equals("0") ?
+    "images/tema_incompleto.png" :
+    ""
+)]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="13" y="24" width="734" height="1" uuid="a9c18749-1c68-438f-8763-0115698a33dc"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="16" y="2" width="19" height="20" uuid="0ed49952-5703-4500-ba8d-742a827505b1"/>
+				<textFieldExpression><![CDATA[$F{row}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="540" y="9" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="6a3aaf48-daae-4374-b472-1df31960aaf4"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="711" y="9" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="d6e102b6-c409-475a-a584-2dd9c7a13642"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="78" y="9" width="125" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="a1ebd1dc-bd52-4663-91f7-b6cb9df53f66"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="17" y="9" width="61" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="1646dda3-b75e-4a5b-b36c-4ca014a08bb2"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Generado: "]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,50 @@
+
+span.reference{
+    position:fixed;
+    left:5px;
+    top:5px;
+    /*font-size:10px;*/
+    text-shadow:1px 1px 1px #fff;
+}
+span.reference a{
+    color:#555;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+span.reference a:hover{
+    color:#000;
+    
+}
+h1{
+    color:#ccc;
+    font-size:36px;
+    text-shadow:1px 1px 1px #fff;
+    padding:20px;
+}
+
+#cargando {
+    position:absolute;
+    width:200px;/*tamaño horizontal*/
+    height:115px;/*tamaño vertical*/
+    z-index:1;
+    left: 575px;/*horizontal*/
+    top: 200px;/*vertical*/
+}
+
+div.formerror
+{
+    color: red;
+    /*otra forma de alinear
+    margin-bottom: 6px;
+    margin-top: 1px;*/
+    position:absolute;
+    left: 253px;
+    top: 53px;
+}
+input.error, select.error, label.error
+{
+    border: 0.5px solid red;
+    background-color: #9F0;
+    margin: 0px;
+    color: red;
+}

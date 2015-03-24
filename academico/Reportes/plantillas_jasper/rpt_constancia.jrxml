@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_constancia" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="57361ff9-7e74-4d96-9f2d-7e2766f55b7e">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[exec ficha.paCon_RptCon $P{cod}]]>
+	</queryString>
+	<field name="cod" class="java.lang.String"/>
+	<field name="ap_pat" class="java.lang.String"/>
+	<field name="ap_mat" class="java.lang.String"/>
+	<field name="nom" class="java.lang.String"/>
+	<field name="fech_mod" class="java.sql.Timestamp"/>
+	<field name="fech_serv" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="02079ba9-3e9d-4149-ab2c-39b6dace2280" x="218" y="18" width="358" height="35"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="30"/>
+				</textElement>
+				<text><![CDATA[CONSTANCIA ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="186" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9883283a-0542-447e-8cf3-3aa78b5359b8" mode="Opaque" x="302" y="15" width="45" height="124" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="SansSerif" size="30" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fech_mod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1e1d1f1b-63a9-4df7-8ab9-cd4388094df9" mode="Opaque" x="611" y="15" width="45" height="98" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="SansSerif" size="30" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b6e9df6a-4564-4a8e-9cd3-1866a5cf4f8f" mode="Opaque" x="383" y="57" width="167" height="49" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="None">
+					<font fontName="SansSerif" size="30" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f5ab167f-ac36-4ccb-b2f4-0d0512aa6161" mode="Opaque" x="656" y="17" width="47" height="110" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="SansSerif" size="30" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="836f7f30-5a14-4cef-8087-88a78723af97" mode="Opaque" x="109" y="17" width="45" height="124" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="SansSerif" size="30" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fech_mod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="627d703d-698f-44c7-a088-0baf612d5d43" mode="Opaque" x="185" y="17" width="45" height="124" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="SansSerif" size="30" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a11c960-cacd-473a-97bc-65aa318c87be" mode="Opaque" x="241" y="15" width="45" height="124" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="SansSerif" size="30" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fech_mod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="431178ea-3cef-448e-be0f-ad3d7692eb34" x="148" y="17" width="258" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom}+', '+$F{ap_pat}+' '+$F{ap_mat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="50c4853d-d5e7-4ff0-acef-5f5ca61b407c" x="401" y="37" width="134" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fech_mod}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1e86c72b-cf46-41e5-868a-615a65b5c93e" x="406" y="17" width="110" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[, con código]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5f180cca-e223-4d13-8114-859a90c4a5ad" x="516" y="17" width="73" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c9b67879-1283-43fb-9cf8-c8139510e92a" x="589" y="17" width="119" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[, a rellenado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="324babbc-d3d2-47ec-b20a-818b5edb3b6a" x="535" y="37" width="12" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d604942f-0760-4bf6-9852-41926b904ab9" mode="Opaque" x="401" y="100" width="216" height="27" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="None">
+					<font fontName="SansSerif" size="15" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fech_mod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6db983d5-865a-4df6-aeb5-f267e6a0cdd1" mode="Opaque" x="74" y="17" width="35" height="110" forecolor="#E6F1F7"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="SansSerif" size="30" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a29a1a88-27fe-40d8-b333-d33955e890cc" x="70" y="17" width="80" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[El alumno ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5ce4bf0d-fd30-4649-9460-e85751aeb71e" x="69" y="37" width="332" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[correctamente su Encuesta Socio Económica. la fecha, ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="79a2f087-f14d-4c7c-835d-a4b6f9cd1e10" x="254" y="86" width="129" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="13" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fech_serv}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="79dfa3c6-0d3a-4422-b2fb-df347b39b6d4" x="96" y="86" width="158" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="13" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Impresión:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="1344bc91-2b44-4aed-9b99-40ff20810ec1" x="74" y="153" width="634" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

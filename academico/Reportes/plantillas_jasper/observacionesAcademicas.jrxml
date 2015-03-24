@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="observacionesAcademicas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="08f625b3-8006-4bfe-98e0-7d9630c18c50">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tipo_obs" class="java.lang.String"/>
+	<parameter name="anio" class="java.lang.String"/>
+	<parameter name="periodo" class="java.lang.String"/>
+	<parameter name="fac" class="java.lang.String"/>
+	<parameter name="car" class="java.lang.String"/>
+	<parameter name="esp" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from [Academico].[faTCon_rptObsAcademicas] ($P{tipo_obs},$P{anio},$P{periodo},$P{fac},$P{car},$P{esp})]]>
+	</queryString>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="dniEst" class="java.lang.String"/>
+	<field name="codEst" class="java.lang.String"/>
+	<field name="nomEst" class="java.lang.String"/>
+	<field name="nroResol" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="codFac" class="java.lang.String"/>
+	<field name="nomFac" class="java.lang.String"/>
+	<field name="codCar" class="java.lang.String"/>
+	<field name="nomCar" class="java.lang.String"/>
+	<field name="codEsp" class="java.lang.String"/>
+	<field name="nomEsp" class="java.lang.String"/>
+	<group name="Facultad">
+		<groupExpression><![CDATA[$F{codFac}]]></groupExpression>
+	</group>
+	<group name="Carrera">
+		<groupExpression><![CDATA[$F{codCar}]]></groupExpression>
+	</group>
+	<group name="Especialidad">
+		<groupExpression><![CDATA[$F{codEsp}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="156">
+			<image hAlign="Center">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="35" y="0" width="44" height="45" uuid="8a9f67e7-f256-4825-8c22-020e12b242fb"/>
+				<imageExpression><![CDATA["images/logo_upla.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="43" width="125" height="21" uuid="f242ed03-023d-4621-9f79-19f075fd69e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD PERUANA LOS ANDES]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="64" width="555" height="20" uuid="38a80a70-460f-4269-af48-ae6b559f1d1f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FACULTAD DE " + $F{nomFac}.trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="84" width="555" height="20" uuid="bc751276-23c6-4e6f-9ba4-bc8d1c67e63a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomCar}.trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="104" width="555" height="20" uuid="25c353f7-1f01-4927-be68-540445e56df8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomEsp}.trim()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="87" y="137" width="177" height="12" uuid="a11a78ec-3089-48de-9c45-42f91d85fcf3"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRES Y APELLIDOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="137" width="101" height="12" uuid="ee719600-4de1-4856-8865-d3bfe6261fdf"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESOLUCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="137" width="107" height="12" uuid="6293d2ae-a705-4a78-ba65-abde44e2a686"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="137" width="59" height="12" uuid="367bee56-594a-49fd-8d91-a4bd4304feef"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="150" width="555" height="1" uuid="51c25ea0-739c-42e7-801e-18c52c32a325"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="4" y="16" width="551" height="27" uuid="27cad1b2-f7d8-4afb-889d-d8538f9a471e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LISTA DE "+ $F{tipo} ]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="43" width="555" height="20" uuid="b732e473-72bc-4056-b2ab-ec5bdc6e8a56"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PERIODO : "+$P{anio}+" - "+$P{periodo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="152" width="555" height="1" uuid="e891f18e-d400-4ed9-9813-2fddb9d95e02"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="6" width="61" height="11" uuid="19eb366d-6f44-4257-810b-1e41e786e71b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codEst}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="6" width="101" height="11" uuid="7fe82663-b3d0-4f85-aa05-7bab2e52fcc6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nroResol}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="6" width="124" height="11" uuid="13b7c424-9433-4f9c-b1ca-4a22ddaef635"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="6" width="177" height="11" uuid="6b5718f6-bc1c-4a4c-b3e6-5378d2b348a0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomEst}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="500" y="14" width="55" height="10" uuid="2a8236db-b6d3-460f-9f10-004cb4c28b22"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág."+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="62" y="13" width="111" height="10" uuid="ab8cb574-14e5-4180-9958-3d1f798f442d"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="13" width="57" height="11" uuid="b5fcb25a-b6ec-49db-9053-de15f8e1757c"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GENERADO:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="10" width="555" height="1" uuid="461470fe-732a-409c-9e78-6dd2551911e5"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

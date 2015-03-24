@@ -1,0 +1,49 @@
+
+body{
+        width:100%;
+        text-align:center;
+        margin: 0px auto;
+        /*background-image:url(../../Recursos/imagenes/imagen_de.jpg);
+        background-repeat:no-repeat;
+        background-position:right bottom;
+        background-attachment:fixed;*/
+}
+
+a:link{   
+ text-decoration:none;   
+}   
+
+.titulo_cabecera{
+  width: 80%;
+  display: inline-block;
+  text-align: left;
+}
+.cabecera{
+  width: 100%;
+  height: 66px;
+  background-color: rgb(34, 66, 107);/*rgb(117, 120, 124)*/
+  color:white;
+  font-size: 33px;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  padding-top: 10px;
+}
+
+.titulo_cabecera_min{
+  width: 80%;
+  display: inline-block;
+  text-align: left;
+}
+.cabecera_min
+{
+  width: 100%;
+  height: 50px;
+  background-color: rgb(34, 66, 107);/*rgb(117, 120, 124)*/
+  color:white;
+  font-size: 33px;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  padding-top: 15px;
+}

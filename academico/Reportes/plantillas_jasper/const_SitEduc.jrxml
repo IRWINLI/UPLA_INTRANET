@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="const_SitEduc" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="43c5b2d6-9a81-490d-9845-4c4685aa3d81">
+	<property name="ireport.zoom" value="1.3310000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="186"/>
+	<subDataset name="dataset1" uuid="3236a83e-80d1-411f-85d5-097d88a828a1"/>
+	<parameter name="NUMREGTGRADO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NUMDOCUTTRABA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[EXEC dbpersonal.dbo.[xsp_RepGradotitulo_JASPER]$P{NUMREGTGRADO},$P{NUMDOCUTTRABA}]]>
+	</queryString>
+	<field name="NUMDOCUTTRABA" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="CODTGRADO" class="java.lang.Integer"/>
+	<field name="NOMTGRADO" class="java.lang.String"/>
+	<field name="MEMOTGRADO" class="java.lang.String"/>
+	<field name="InsEduPeruana" class="java.lang.String"/>
+	<field name="regimen" class="java.lang.String"/>
+	<field name="CODSITACAD" class="java.lang.String"/>
+	<field name="NOMVALORSITUACION" class="java.lang.String"/>
+	<field name="CODTIPOINSTITUCION" class="java.lang.String"/>
+	<field name="NOMTIPOINSTITUCION" class="java.lang.String"/>
+	<field name="CODINSTITUCION" class="java.lang.String"/>
+	<field name="NOMINSTITUCION" class="java.lang.String"/>
+	<field name="CODCARRERA" class="java.lang.String"/>
+	<field name="NOMCARRERA" class="java.lang.String"/>
+	<field name="campo" class="java.sql.Date"/>
+	<field name="AÑO" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="126" y="11" width="295" height="54" uuid="11120063-73fe-4455-9259-961a32d324a1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="20" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CONSTANCIA DE SITUACIÓN EDUCATIVA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="2" width="72" height="65" uuid="8a066fbb-3b87-4f2b-aaf7-c86e2974986f"/>
+				<imageExpression><![CDATA["/images/logo_upla.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="57" y="35" width="55" height="29" uuid="a6a63eb5-6578-45ef-aaac-16162408833f"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Oficina Universitaria de Personal]]></text>
+			</staticText>
+			<line>
+				<reportElement x="53" y="31" width="55" height="1" uuid="65e8384f-e2d1-4c4f-affa-fbea720310ac"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="58" y="12" width="55" height="20" uuid="afd778c5-5cf4-4931-839e-2dac10297a42"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UPLA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="452" y="27" width="91" height="16" uuid="409e6967-b9cc-48c1-b5ab-1a8191946728"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUMDOCUTTRABA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="27" width="19" height="14" uuid="0d9b3ef7-d319-4cab-8442-8f83aed926a1"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Yo                             ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="3" width="364" height="14" uuid="d7402e89-324d-44b5-8696-88e3130fe7e9"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Conste por el presente documento, al que brindo mayor fuerza legal.             ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="27" width="109" height="14" uuid="c9e57e9b-22bd-4f2a-8572-5ba537fae93b"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[, identificado con DNI                       ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="43" y="27" width="299" height="14" uuid="e9dbaab7-6997-4c47-bf54-2ce4a15e7141"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="11" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="301" splitType="Stretch">
+			<staticText>
+				<reportElement x="63" y="58" width="138" height="15" uuid="c341ec36-5d74-4f85-a2cf-4ff0d347a2f3"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mi Formación Superior es ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="58" width="19" height="15" uuid="1c0af7fc-15fc-4219-8d70-68a58ee7b708"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="82" width="19" height="15" uuid="db3c29c7-8c9e-454c-92f7-776beab0f31a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="82" width="138" height="15" uuid="474c3a50-79f4-4512-92d3-a799d7a8e981"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mi Institución Educativa es ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="106" width="19" height="15" uuid="4fbf30db-3e7d-4951-947d-3d7c1e7af5d0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[4. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="106" width="289" height="15" uuid="9c91bfb0-0f7f-4b05-81c0-14fefa6a3ca2"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[El Régimen de la Institución Educativa donde estudie es]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="130" width="19" height="15" uuid="4e593bae-4ffa-4572-8566-f74b8a33acfa"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[5. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="130" width="207" height="15" uuid="ee0112f4-4d2f-494a-b678-bd1dd2ce6148"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[El Tipo de institución donde me forme es]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="153" width="19" height="15" uuid="6a765b8f-c098-473a-bd2b-ceacae01f360"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="153" width="237" height="15" uuid="23bdd402-684d-4da1-afe4-ca7dabbae89e"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[El Nombre de la Institución donde estudié es la ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="177" width="19" height="15" uuid="3ea7c692-739d-4947-bf4c-0dfc713d1b72"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[7. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="177" width="138" height="15" uuid="f25cc67e-7599-4925-9270-e798306fdd8c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[La Carrera que estudié es ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="201" width="19" height="15" uuid="3c7e69cc-50f1-4c89-b547-27dd120265e5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[8. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="201" width="92" height="15" uuid="cb5dab4e-9428-4328-9fe0-0add34f78442"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[El año de Egreso ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="233" width="523" height="36" uuid="43e77a50-e89b-471c-9bd8-1b5ac7aff292"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[La presente declaración se ajusta a la verdad, de probarse lo contrario acepto ser excluido automáticamente de la Universidad.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="271" width="540" height="23" uuid="2e1fb46a-0d2c-4138-9617-eba7c4307d72"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Lo que doy fe con mi firma y huella digital en señal de conformidad.]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="201" y="32" width="345" height="26" uuid="a83f521d-6e86-4c4e-b375-859c00c18a08"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMVALORSITUACION}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="201" y="58" width="345" height="24" uuid="aaaf86ad-43c4-45a1-840e-02cd1df241c3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMTGRADO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="201" y="82" width="345" height="24" uuid="80bfc372-6d7f-403a-92a1-77e0ef27af02"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{InsEduPeruana}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="352" y="106" width="194" height="24" uuid="66f548fb-40e2-49a3-b306-5f569f42215a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{regimen}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="270" y="130" width="276" height="23" uuid="d95c41a6-7c4b-4273-83df-35d320f3f6b9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMTIPOINSTITUCION}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="300" y="153" width="246" height="24" uuid="fdda19b3-3407-4a43-8740-5b68c34f66af"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMINSTITUCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="177" width="345" height="24" uuid="b3e51c88-4e5f-49f7-90b1-a2c59d4e9df4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMCARRERA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="155" y="201" width="388" height="32" uuid="4881e833-b93a-407b-9167-f0082f47f533"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AÑO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="0" width="523" height="15" uuid="29b3a80f-0423-4f53-a6b1-9323616521f3"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Declaro bajo juramento que:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="32" width="138" height="15" uuid="5703745a-62bc-4901-ab4e-119a80f4f381"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mi situación Educativa es ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="32" width="19" height="15" uuid="e3a8ece1-b66f-463f-a7b1-0e9f58a4e08d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="159" splitType="Stretch">
+			<line>
+				<reportElement x="145" y="56" width="149" height="1" uuid="7527e457-46f6-460b-86bc-2b17dbc9a5fe"/>
+			</line>
+			<staticText>
+				<reportElement x="202" y="59" width="48" height="15" uuid="6716dbd0-e2cf-4df0-9c29-e2bce1126303"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FIRMA]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="304" y="9" width="57" height="55" uuid="69425eda-12ec-48ab-a18b-807040f50649"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="368" y="114" width="178" height="20" uuid="062f1636-910c-4cd5-ba9f-b873faaac549"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="114" width="61" height="20" uuid="c64675df-53dd-4691-a2a1-c1c47b487ad2"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Huancayo,]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="121"/>
+	</pageFooter>
+</jasperReport>

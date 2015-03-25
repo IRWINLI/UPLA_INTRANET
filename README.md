@@ -1,3 +1,3 @@
 # UPLA_INTRANET
 
-Proyecto principal - origen
+Proyecto principal - desarollo

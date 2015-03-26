@@ -1,3 +1,4 @@
 # UPLA_INTRANET
 
-Proyecto principal
+Proyecto Calidad Total
+Yepez
